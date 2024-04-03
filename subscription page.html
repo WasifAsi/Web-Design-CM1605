@@ -96,7 +96,7 @@
           
     
           <section class="top">
-            <img src="Images/myHealthFavicon.png" />
+            <img src="Images/myHealthFavicon.png" alt="main-logo"/>
             <ul>
               <li>
                 <h3>Resources</h3>
@@ -134,11 +134,12 @@
         <script>
             document.getElementById("subscribeForm").addEventListener("submit", function(event) {
               event.preventDefault();
+              var name = document.getElementById("name").value;
               var email = document.getElementById("email").value;
               if (validateEmail(email)) {
-                document.getElementById("message").innerHTML = "Thank you for subscribing!";
+                document.getElementById("message").innerHTML = `Dear ${name},Thank you for subscribing!`;
                 document.getElementById("subscribeForm").reset();
-                alert("Thank you");
+                alert(`Dear ${name}, you have successfully subscribed for a personalized newsletter!`);
               } else {
                 document.getElementById("message").innerHTML = "Please enter a valid email address.";
               }
