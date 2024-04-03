@@ -1,0 +1,31 @@
+<!DOCTYPE data [
+    <!ENTITY star "&#x2B50;">
+]>
+<data>
+    <reviews>
+        <review>
+            <profile>Images/Products/bpm1.jpg</profile>
+            <name-user>Magnus Carlson</name-user>
+            <ID>magnus</ID>
+            <comment>Great service! Very knowledgeable staff and quick response time.</comment>
+            <stars>&star;&star;&star;&star;</stars>
+        </review>
+
+        <review>
+            <profile>Images/Products/bpm1.jpg</profile>
+            <name-user>Magnus Carlson</name-user>
+            <ID>magnus</ID>
+            <comment>Great service! Very knowledgeable staff and quick response time.</comment>
+            <stars>&star;&star;&star;&star;</stars>
+        </review>
+
+        <review>
+            <profile>Images/Products/bpm1.jpg</profile>
+            <name-user>Magnus Carlson</name-user>
+            <ID>magnus</ID>
+            <comment>Great service! Very knowledgeable staff and quick response time.</comment>
+            <stars>&star;&star;&star;&star;</stars>
+        </review>
+        
+    </reviews>
+</data>
