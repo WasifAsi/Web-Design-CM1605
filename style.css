@@ -20,19 +20,23 @@ body{
     color: #343a40;
     overflow-x: hidden;
 }
+.no-scroll {
+  overflow: hidden;
+}
 
 /*General navigation styling*/
 .topnav {
     position: fixed;
     width: 100%;
     z-index: 5;
+    top:0px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     align-content: center;
     background-color: white;
     overflow: hidden;
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.6);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
@@ -45,7 +49,6 @@ body{
     height: 2em; /* Adjust based on your logo's size */
     width: auto;
     padding: 12px 10px;
-    margin-left: 5%;
 }
 .myHealth {
     text-decoration: none;
@@ -56,6 +59,7 @@ body{
     font-weight: bold;
 }
 .left-nav a{
+  margin-left: 30%;
     text-decoration: none;
     display: flex;
     align-items: center;
@@ -77,23 +81,65 @@ body{
     margin: 0 8px;
     font-size: 1em; /* Adjust based on your preference */
     padding: 8px 10px;
-    color: #343a40;
+    color: #0a1536;
     font-weight: bold;
 }
-.button {
-    text-align: center;
+
+.main-pages {
+	color: #0a1536;
+  position: relative;
+  text-decoration: none;
 }
-.header
+
+.main-pages:not(.active-link)::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  border-radius: 4px;
+  background-color: #0a1536;
+  bottom: 0;
+  left: 0;
+  transform-origin: right;
+  transform: scaleX(0);
+  transition: transform .3s ease-in-out;
+}
+
+.main-pages:not(.active-link):hover::before {
+  transform-origin: left;
+  transform: scaleX(1);
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  border-radius: 4px;
+  background-color: #0a1536;
+  bottom: 0;
+  left: 0;
+}
+.active-link {
+  border-bottom: 2px solid #0a1536;
+}
+
+
+.button {
+    text-decoration: none;
+    text-align: center;
+    color: #fff;
+}
+
 .btn-hover {
-    width: 80px;
+    width: 200px;
+    font-size: 16px;
     font-weight: 600;
     color: #fff;
     cursor: pointer;
-    height: 30px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    height: 55px;
     text-align:center;
     border: none;
     background-size: 300% 100%;
-
     border-radius: 50px;
     moz-transition: all .4s ease-in-out;
     -o-transition: all .4s ease-in-out;
@@ -112,9 +158,10 @@ body{
 .btn-hover:focus {
     outline: none;
 }
+
 .btn-hover.color-2 {
     background-image: linear-gradient(to right, #f5ce62, #e43603, #fa7199, #e85a19);
-    box-shadow: 0 1px 2px 0 rgba(229, 66, 10, 0.75);
+    box-shadow: 0 4px 15px 0 rgba(229, 66, 10, 0.75);
 }
 
 .shopping-cart{
@@ -125,46 +172,51 @@ body{
 }
 
 
-/* Always hide the hamburger menu by default and only show when under 800px */
 .icon {
-    display: none;
+  display: none; /* Hide by default */
 }
 
-@media screen and (max-width: 800px) {
-        .topnav a :not(.myHealth) {display: none;}
-        .topnav a.icon {
-          float: right;
-          display: block;
-          right: 0;
-          top: 0;
-        }
-      }
-      @media screen and (max-width: 600px) {
-        .second-nav.responsive {position: fixed;}
-        .icon {
-        
-          position: absolute;
-          right: 0;
-          top: 0;
 
-        }
-        .second-nav .responsive a {
-          display: block;
-          text-align: left;
-          z-index: 6;
-        }
-      }
+@media screen and (max-width: 768px) {
+  .hidden{
+      display: none; /* Hide the navigation links on smaller screens */
+  }
+  .myHealth{
+    display: none;
+  }
+  .icon {
+      display: block; /* Show the menu icon on smaller screens */
+      position: fixed;
+      color:#0a1535;
+      right: 0;
+      top: 22px;
+      padding: 16px;
+      z-index: 7;
+  }
+}
+@media screen and (max-width: 768px) {
+  
+  
+  #right-nav {
+      flex-direction: column; /* Stack the links vertically */
+      position: absolute;
+      height: 90vh;
+      top: 1em; /* Adjust based on your header's height */
+      left:0px;
+      width: 100%; /* Full width */
+      box-shadow: 0 4px 5px rgba(0,0,0,0.2);
+      position: relative;
+  }
+  #right-nav a , #right-nav button{
+      text-align: center; /* Center-align the links */
+      padding: 5px;
+      border-bottom: 1px solid #ccc; /* Optional: adds a divider between links */
+      color: black;
+      z-index: 7;
+  }
+}
 
 
-
-
-
-
-
-
-
-
-      
 
 
 /* Footer styling */
@@ -177,7 +229,10 @@ footer {
   background: #0a1535;
   color: #f9f9f9;
   clear: both;
+  margin-top: 10%;
 }
+
+
 
 footer article {
   display: flex;
@@ -199,6 +254,7 @@ footer article h2 {
 }
 
 footer article button {
+  text-decoration: none;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -210,6 +266,16 @@ footer article button {
   border-radius: 30px;
   color: #f9f9f9;
   font-family: inherit;
+  font-size: 16px;
+}
+footer article button:hover span {
+    translate: 5px 0px;
+    transition: 0.5s ;
+}
+
+footer article button a{
+  text-decoration: none;
+  color: #f9f9f9;
   font-size: 16px;
 }
 
@@ -250,7 +316,7 @@ section.top ul {
 @media (width > 600px) {
   footer article {
     flex-direction: row;
-    min-height: 140px;
+    min-height: 49px;
     margin: -170px 20px 20px;
     padding: 30px 50px 30px;
   }
